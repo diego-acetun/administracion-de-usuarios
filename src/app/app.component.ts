@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'administracion-de-usuarios';
+
+  onClick(){
+    console.log("funcionando el boton");
+  }
 }

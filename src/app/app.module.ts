@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +11,9 @@ import { SubtituloComponent } from './components/atomos/subtitulo/subtitulo.comp
 import { LoginFormComponent } from './components/moleculas/login-form/login-form.component';
 import { TituloComponent } from './components/atomos/titulo/titulo.component';
 import { LoginComponent } from './components/organismos/login/login.component';
+import { CrearUsuarioComponent } from './components/organismos/crear-usuario/crear-usuario.component';
+import { UsersFormComponent } from './components/moleculas/users-form/users-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,13 +22,20 @@ import { LoginComponent } from './components/organismos/login/login.component';
     SubtituloComponent,
     LoginFormComponent,
     TituloComponent,
-    LoginComponent
+    LoginComponent,
+    CrearUsuarioComponent,
+    UsersFormComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

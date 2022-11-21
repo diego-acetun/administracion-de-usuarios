@@ -8,15 +8,14 @@ import { UsersFormComponent } from '../../moleculas/users-form/users-form.compon
 export class CrearUsuarioComponent implements OnInit, AfterViewInit {
   @ViewChild(UsersFormComponent) formulario1!: UsersFormComponent;
   constructor() {}
-
+  
   ngOnInit(): void {}
   ngAfterViewInit() {
     // console.log('formOtro 2', this.formOtro);
     // ...
   }
 
-
   click1() {
-    // console.log('formulario1', this.formulario1.formLogin.value);
+    console.log('formulario1', this.formulario1.formulario.value);
   }
 }

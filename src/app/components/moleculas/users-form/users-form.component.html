@@ -1,56 +1,31 @@
-<form class="flex justify-center" [formGroup]="formLogin">
+<form class="flex justify-center" [formGroup]="formulario">
   <div class="w-1/2">
     <div class="mb-6">
-      <label
-        for="name"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Nombre</label
-      >
-      <input
-        type="text"
+      <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
+      <input type="text"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark dark:"
-        placeholder="user@claro.com"
-        formControlName="name"
-      />
+        placeholder="user@claro.com" formControlName="name" />
     </div>
     <div class="mb-6">
-      <label
-        for="fechaNacimiento"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Fecha de nacimiento</label
-      >
-      <input
-        type="date"
+      <label for="fechaNacimiento" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
+        nacimiento <br> dd/mm/yy</label>
+      <input type="text"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark dark:"
-        formControlName="fechaNacimiento"
-      />
+        formControlName="fechaNacimiento" />
     </div>
     <div class="mb-6">
-      <label
-        for="email"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Correo electrónico</label
-      >
-      <input
-        type="email"
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo electrónico</label>
+      <input type="email"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark dark:"
-        formControlName="email"
-        placeholder="user@claro.com"
-      />
+        formControlName="email" placeholder="user@claro.com" />
     </div>
     <div class="mb-6">
-      <label
-        for="password"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Contraseña <br />
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña <br />
         Debe contener al menos una letra Mayúscula, 1 carácter especial (#$&@.),
-        1 número ser al menos de 6 dígitos</label
-      >
-      <input
-        type="password"
+        1 número ser al menos de 6 dígitos</label>
+      <input type="password"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark dark:"
-        formControlName="password"
-      />
+        formControlName="password" />
     </div>
     <ng-content></ng-content>
     <!-- <button

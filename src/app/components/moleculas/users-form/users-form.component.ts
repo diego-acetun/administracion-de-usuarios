@@ -9,7 +9,7 @@ import { usuario } from 'src/app/interfaces/usuario';
 export class UsersFormComponent implements OnInit {
   @Input() user: usuario = {
     nombre: '',
-    fechaNacimiento: '',
+    fechaNacimiento: "2000-04-02",
     email: '',
     password: '',
   };

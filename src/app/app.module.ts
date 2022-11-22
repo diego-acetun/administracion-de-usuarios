@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 // import { CommonModule } from '@angular/common';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
-// import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LeerUsuariosComponent } from './components/organismos/leer-usuarios/leer-usuarios.component';
 import { TablaComponent } from './components/moleculas/tabla/tabla.component';
 import { ActualizarUsuarioComponent } from './components/organismos/actualizar-usuario/actualizar-usuario.component';
+import { SidebarComponent } from './components/moleculas/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -32,14 +34,15 @@ import { ActualizarUsuarioComponent } from './components/organismos/actualizar-u
     LeerUsuariosComponent,
     TablaComponent,
     ActualizarUsuarioComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    // BrowserAnimationsModule,
-    // ToastrModule.forRoot({}),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent],

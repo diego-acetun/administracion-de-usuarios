@@ -9,22 +9,22 @@ export class LeerUsuariosComponent implements OnInit {
   public usuarios: usuario[] = [
     {
       nombre: 'name1',
-      fechaNacimiento: '20/06/1990',
+      fechaNacimiento: '1990/02/05',
       email: 'email@mail',
     },
     {
       nombre: 'name2',
-      fechaNacimiento: '20/06/1990',
+      fechaNacimiento: '1990/02/05',
       email: 'email@mail',
     },
     {
       nombre: 'name3',
-      fechaNacimiento: '20/06/1990',
+      fechaNacimiento: '1990/02/05',
       email: 'email@mail',
     },
     {
       nombre: 'name4',
-      fechaNacimiento: '20/06/1990',
+      fechaNacimiento: '1990/02/05',
       email: 'email@mail',
     },
   ];
@@ -35,7 +35,7 @@ export class LeerUsuariosComponent implements OnInit {
   click() {
     this.usuarios.push({
       nombre: 'name5',
-      fechaNacimiento: '20/06/1990',
+      fechaNacimiento: '1990/02/05',
       email: 'email@mail',
     });
   }

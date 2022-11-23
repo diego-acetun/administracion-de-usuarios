@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +38,7 @@ import { SidebarComponent } from './components/moleculas/sidebar/sidebar.compone
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

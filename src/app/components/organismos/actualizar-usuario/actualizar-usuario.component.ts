@@ -7,8 +7,8 @@ import { usuario } from 'src/app/interfaces/usuario';
 })
 export class ActualizarUsuarioComponent implements OnInit {
   user: usuario = {
-    nombre: 'nameEdit',
-    fechaNacimiento: '2002/02/06',
+    name: 'nameEdit',
+    birthday: '2002/02/06',
     email: 'mail@mail',
   };
   constructor() {}

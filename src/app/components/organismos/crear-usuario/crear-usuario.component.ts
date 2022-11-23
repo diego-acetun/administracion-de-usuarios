@@ -17,8 +17,17 @@ export class CrearUsuarioComponent implements OnInit, AfterViewInit {
   }
 
   click1() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
+    // this.toastr.success('Hello world!', 'Toastr fun!');
     console.log('formulario1', this.formulario1.formulario.value);
+    console.log('formulario1', this.formulario1.formulario.invalid);
+    console.log("jxjsx", this.formulario1.formulario.get('password')?.errors);
+    if (this.formulario1.formulario.invalid) {
+      this.toastr.error(
+        'Los campos del formulario no se han llenado correctamente'
+      );
+      return;
+    }
+    this.toastr.success('Se ha creado el usuario');
   }
 }
 //npm i package -E

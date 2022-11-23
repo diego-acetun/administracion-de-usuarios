@@ -1,6 +1,8 @@
-export interface usuario{
-  nombre: string,
-  fechaNacimiento?: string,
-  email: string,
-  password?: string
+export interface usuario {
+  id?: string;
+  name: string;
+  birthday?: string;
+  email: string;
+  password?: string;
+  image?: string;
 }

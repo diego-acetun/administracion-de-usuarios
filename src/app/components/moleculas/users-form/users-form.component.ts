@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { usuario } from 'src/app/interfaces/usuario';
+import { Validaciones } from 'src/app/validaciones';
 @Component({
   selector: 'app-users-form',
   templateUrl: './users-form.component.html',
@@ -8,8 +9,8 @@ import { usuario } from 'src/app/interfaces/usuario';
 })
 export class UsersFormComponent implements OnInit {
   @Input() user: usuario = {
-    nombre: '',
-    fechaNacimiento: "2000-04-02",
+    name: '',
+    birthday: '2000-04-02',
     email: '',
     password: '',
   };
@@ -20,10 +21,18 @@ export class UsersFormComponent implements OnInit {
     // let date: Date = new Date();
     // console.log('Date = ' + date);
     this.formulario = this.formBuilder.group({
-      name: [this.user.nombre],
-      fechaNacimiento: [this.user.fechaNacimiento],
-      email: [this.user.email],
-      password: [this.user.password],
+      name: [this.user.name, [Validators.required]],
+      birthday: [this.user.birthday, [Validators.required]],
+      email: [this.user.email, [Validators.required, Validators.email]],
+      password: [
+        this.user.password,
+        [
+          Validators.required,
+          Validators.minLength(5),
+          Validaciones.validarPasswordConCaracteresEspeciales,
+          Validaciones.validarPasswordConMayuscula,
+        ],
+      ],
     });
   }
 }

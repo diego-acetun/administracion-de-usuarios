@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { usuario } from 'src/app/interfaces/usuario';
 import { Validaciones } from 'src/app/validaciones';
 @Component({
@@ -15,12 +16,15 @@ export class UsersFormComponent implements OnInit {
     password: '',
     image: '',
   };
+  @Input() obs!: Observable<usuario>;
   public formulario!: FormGroup;
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
     // let date: Date = new Date();
     // console.log('Date = ' + date);
+    // obs.sus
+    
     this.formulario = this.formBuilder.group({
       name: [this.user.name, [Validators.required]],
       birthday: [this.user.birthday, [Validators.required]],
@@ -35,6 +39,11 @@ export class UsersFormComponent implements OnInit {
           Validaciones.validarPasswordConMayuscula,
         ],
       ],
+    });
+    this.obs.subscribe((user) => {
+      this.user = user
+      this.formulario.patchValue(this.user);
+      console.log('usuario desde actualizar', this.user);
     });
   }
 }

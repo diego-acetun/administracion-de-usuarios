@@ -4,6 +4,7 @@ import { UsuarioService } from 'src/app/usuario.service';
 
 import { usuario } from 'src/app/interfaces/usuario';
 import { UsersFormComponent } from '../../moleculas/users-form/users-form.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-actualizar-usuario',
@@ -28,12 +29,9 @@ export class ActualizarUsuarioComponent implements OnInit {
     this.getUsuario();
   }
 
-  getUsuario() {
+  getUsuario():Observable<usuario> {
     const id = this.route.snapshot.paramMap.get('id')!;
     console.log('id desde actualizar', id);
-    this.usuarioService.getUsuario(id).subscribe((user) => {
-      this.user = user;
-      console.log('usuario desde actualizar', this.user);
-    });
+    return this.usuarioService.getUsuario(id)
   }
 }

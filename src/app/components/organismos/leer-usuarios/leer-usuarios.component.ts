@@ -43,8 +43,11 @@ export class LeerUsuariosComponent implements OnInit {
   }
 
   paginaSiguiente() {
-    console.log('siguinete');
     this.usuarioService.page += 1;
+    this.getHeroes();
+  }
+  paginaAnterior() {
+    this.usuarioService.page -= 1;
     this.getHeroes();
   }
 }

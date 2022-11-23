@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 import { usuario } from './interfaces/usuario';
 import { data } from './interfaces/data';
@@ -20,23 +21,32 @@ export class UsuarioService {
       // 'Access-Control-Allow-Origin': '*',
     }),
   };
-  constructor(private http: HttpClient, private toastr: ToastrService) {}
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   login(credentials: login): Observable<usuario> {
+    // if (credentials.username === 'admin' && credentials.password == 'admin') {
+    //   this.router.navigate(['/']);
+    //   return of();
+    // }
     return this.http
       .post<usuario>(`${this.url}/login`, credentials, this.httpOptions)
       .pipe(
-        tap((_) =>
-          this.toastr.success(
-            'Iniciando sesion'
-          )
-        ),
-        catchError(this.handleError<any>('getUsuarios', []))
+        tap((_) => {
+          // this.toastr.success('Iniciando sesion');
+          this.router.navigate([`/home/${_.id}`]);
+        }),
+        catchError(this.handleError<any>('loginError', []))
       );
   }
   getUsuario(id: string): Observable<usuario> {
-    return this.http.get<data>(`${this.url}/users${id}`).pipe(
-      tap((_) => console.log('bien getUser')),
+    return this.http.get<usuario>(`${this.url}/users/${id}`).pipe(
+      tap((_) =>
+        this.toastr.success(`usuario ${_.name} obtenido`)
+      ),
       catchError(this.handleError<any>('getUsusario', []))
     );
   }
@@ -46,7 +56,7 @@ export class UsuarioService {
       .post<usuario>(`${this.url}/users`, user, this.httpOptions)
       .pipe(
         tap((newUser: usuario) =>
-          console.log(`se creo el usuario ${newUser.name}`)
+          this.toastr.success(`Se ha creado el usuario ${newUser.name}`)
         ),
         catchError(this.handleError<usuario>('addHero'))
       );
@@ -57,18 +67,22 @@ export class UsuarioService {
       .get<data>(`${this.url}/users?page=${this.page}&limit=50`)
       .pipe(
         map((ususarios) => ususarios.rows),
-        tap((_) => console.log('bien')),
+        tap((_) =>
+          this.toastr.success(`Usuarios de la pagina ${this.page}`)
+        ),
         catchError(this.handleError<any>('getUsuarios', []))
       );
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      this.toastr.error('Credenciales incorrectas');
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
+      if (operation === 'loginError') {
+        this.toastr.error('Credenciales incorrectas');
+      }
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

@@ -20,7 +20,7 @@ import { LeerUsuariosComponent } from './components/organismos/leer-usuarios/lee
 import { TablaComponent } from './components/moleculas/tabla/tabla.component';
 import { ActualizarUsuarioComponent } from './components/organismos/actualizar-usuario/actualizar-usuario.component';
 import { SidebarComponent } from './components/moleculas/sidebar/sidebar.component';
-
+import { HomeComponent } from './components/organismos/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +35,7 @@ import { SidebarComponent } from './components/moleculas/sidebar/sidebar.compone
     TablaComponent,
     ActualizarUsuarioComponent,
     SidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

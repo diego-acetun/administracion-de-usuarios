@@ -34,7 +34,6 @@ export class CrearUsuarioComponent implements OnInit, AfterViewInit {
       );
       return;
     }
-    this.toastr.success('Se ha creado el usuario');
     this.nuevoUsuario = this.formulario1.formulario.value;
     // console.log('nuevo ususario', this.nuevoUsuario);
     this.usuarioService

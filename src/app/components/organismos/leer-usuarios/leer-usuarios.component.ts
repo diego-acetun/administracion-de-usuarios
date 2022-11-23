@@ -39,14 +39,12 @@ export class LeerUsuariosComponent implements OnInit {
   getHeroes(): void {
     this.usuarioService
       .getUsuarios()
-      .subscribe((users) => this.usuarios = users);
+      .subscribe((users) => (this.usuarios = users));
   }
 
-  click() {
-    this.usuarios.push({
-      name: 'name5',
-      birthday: '1990/02/05',
-      email: 'email@mail',
-    });
+  paginaSiguiente() {
+    console.log('siguinete');
+    this.usuarioService.page += 1;
+    this.getHeroes();
   }
 }

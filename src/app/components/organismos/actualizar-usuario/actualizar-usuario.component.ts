@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UsuarioService } from 'src/app/usuario.service';
+
 import { usuario } from 'src/app/interfaces/usuario';
+import { UsersFormComponent } from '../../moleculas/users-form/users-form.component';
+
 @Component({
   selector: 'app-actualizar-usuario',
   templateUrl: './actualizar-usuario.component.html',
@@ -8,10 +13,27 @@ import { usuario } from 'src/app/interfaces/usuario';
 export class ActualizarUsuarioComponent implements OnInit {
   user: usuario = {
     name: 'nameEdit',
-    birthday: '2002/02/06',
+    birthday: '1997-05-25',
     email: 'mail@mail',
+    password: '123456',
+    image: 'localhost',
   };
-  constructor() {}
 
-  ngOnInit(): void {}
+  constructor(
+    private route: ActivatedRoute,
+    private usuarioService: UsuarioService
+  ) {}
+
+  ngOnInit(): void {
+    this.getUsuario();
+  }
+
+  getUsuario() {
+    const id = this.route.snapshot.paramMap.get('id')!;
+    console.log('id desde actualizar', id);
+    this.usuarioService.getUsuario(id).subscribe((user) => {
+      this.user = user;
+      console.log('usuario desde actualizar', this.user);
+    });
+  }
 }

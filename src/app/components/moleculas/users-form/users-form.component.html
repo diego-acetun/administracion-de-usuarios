@@ -4,7 +4,7 @@
       <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">name</label>
       <input type="text"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark dark:"
-        placeholder="user@claro.com" formControlName="name" />
+        formControlName="name" />
     </div>
     <div class="mb-6">
       <label for="birthday" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Fecha de
@@ -20,6 +20,12 @@
         formControlName="email" placeholder="user@claro.com" />
     </div>
     <div class="mb-6">
+      <label for="image" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen</label>
+      <input type="text"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark dark:"
+        formControlName="image" />
+    </div>
+    <div class="mb-6">
       <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña <br />
         Debe contener al menos una letra Mayúscula, 1 carácter especial (#$&@.),
         1 número ser al menos de 6 dígitos</label>
@@ -28,11 +34,5 @@
         formControlName="password" />
     </div>
     <ng-content></ng-content>
-    <!-- <button
-      type="submit"
-      class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 -blue-800"
-    >
-      Submit
-    </button> -->
   </div>
 </form>

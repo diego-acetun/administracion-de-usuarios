@@ -13,6 +13,7 @@ export class UsersFormComponent implements OnInit {
     birthday: '2000-04-02',
     email: '',
     password: '',
+    image: '',
   };
   public formulario!: FormGroup;
   constructor(private formBuilder: FormBuilder) {}
@@ -24,6 +25,7 @@ export class UsersFormComponent implements OnInit {
       name: [this.user.name, [Validators.required]],
       birthday: [this.user.birthday, [Validators.required]],
       email: [this.user.email, [Validators.required, Validators.email]],
+      image: [this.user.image, [Validators.required]],
       password: [
         this.user.password,
         [

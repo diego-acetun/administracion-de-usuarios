@@ -12,10 +12,10 @@ export class LeerUsuariosComponent implements OnInit {
   constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getUsuarios();
   }
 
-  getHeroes(): void {
+  getUsuarios(): void {
     this.usuarioService
       .getUsuarios()
       .subscribe((users) => (this.usuarios = users));
@@ -23,10 +23,10 @@ export class LeerUsuariosComponent implements OnInit {
 
   paginaSiguiente() {
     this.usuarioService.page += 1;
-    this.getHeroes();
+    this.getUsuarios();
   }
   paginaAnterior() {
     this.usuarioService.page -= 1;
-    this.getHeroes();
+    this.getUsuarios();
   }
 }

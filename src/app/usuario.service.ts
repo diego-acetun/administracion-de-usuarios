@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, ignoreElements, map, tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ import { login } from './interfaces/login';
 export class UsuarioService {
   // private url = 'https://crud-user.vercel.app/api/v1/users?page=1&limit=50';
   private url = 'https://crud-user.vercel.app/api/v1';
-  public page = 1;
+  public page = 11;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -27,6 +27,12 @@ export class UsuarioService {
     private router: Router
   ) {}
 
+  logOut() {
+    if (localStorage.getItem('usuario')) {
+      localStorage.removeItem('usuario');
+    }
+    this.router.navigate([``]);
+  }
   verficarToken() {
     if (localStorage.getItem('usuario')) {
       const loggedUser = localStorage.getItem('usuario') || '';
@@ -70,6 +76,10 @@ export class UsuarioService {
   }
 
   getUsuarios(): Observable<usuario[]> {
+    if (this.page <= 1) {
+      this.page = 1;
+      this.toastr.success(`Estas en la pagina ${this.page}`);
+    }
     return this.http
       .get<data>(`${this.url}/users?page=${this.page}&limit=50`)
       .pipe(

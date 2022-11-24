@@ -9,8 +9,11 @@ import { usuario } from 'src/app/interfaces/usuario';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  user!: usuario;
-  name = 'diego';
+  user: usuario = {
+    name: '',
+    email: '',
+    image: '',
+  };
   constructor(
     private route: ActivatedRoute,
     private router: Router,

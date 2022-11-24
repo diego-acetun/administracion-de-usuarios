@@ -13,13 +13,17 @@ export class LoginComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.usuarioService.verficarToken();
+  }
 
-  p() {
+  click() {
     console.log('form', this.form.formulario.value);
     const credentials: login = this.form.formulario.value;
     this.usuarioService
       .login(credentials)
-      .subscribe((user) => console.log('login', user));
+      .subscribe((user) => {
+        
+      });
   }
 }

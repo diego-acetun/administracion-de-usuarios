@@ -14,7 +14,7 @@ import { login } from './interfaces/login';
 export class UsuarioService {
   // private url = 'https://crud-user.vercel.app/api/v1/users?page=1&limit=50';
   private url = 'https://crud-user.vercel.app/api/v1';
-  public page = 11;
+  public page = 1;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -27,6 +27,14 @@ export class UsuarioService {
     private router: Router
   ) {}
 
+  verficarToken() {
+    if (localStorage.getItem('usuario')) {
+      const loggedUser = localStorage.getItem('usuario') || '';
+      const user: usuario = JSON.parse(loggedUser);
+      console.log('user local', user);
+      this.router.navigate([`/home/${user.id}`]);
+    }
+  }
   login(credentials: login): Observable<usuario> {
     // if (credentials.username === 'admin' && credentials.password == 'admin') {
     //   this.router.navigate(['/']);
@@ -38,6 +46,7 @@ export class UsuarioService {
         tap((_) => {
           // this.toastr.success('Iniciando sesion');
           this.router.navigate([`/home/${_.id}`]);
+          localStorage.setItem('usuario', JSON.stringify(_));
         }),
         catchError(this.handleError<any>('loginError', []))
       );

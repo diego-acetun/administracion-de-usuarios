@@ -36,10 +36,12 @@ export class UsersFormComponent implements OnInit {
         ],
       ],
     });
-    this.obs.subscribe((user) => {
-      this.user = user;
-      this.formulario.patchValue(this.user);
-      console.log('mal', this.user);
-    });
+    if (this.obs) {
+      this.obs.subscribe((user) => {
+        this.user = user;
+        this.formulario.patchValue(this.user);
+        console.log('mal', this.user);
+      });
+    }
   }
 }

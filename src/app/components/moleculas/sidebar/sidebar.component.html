@@ -1,7 +1,8 @@
-<div class="absolute top-5 sm:left-5 left-2"><span class="text-3xl absolute z-30 hover:cursor-pointer"
+<div class="absolute top-5"><span class="text-3xl absolute z-30 hover:cursor-pointer"
     (click)="click()">☰</span>
-  <aside class="w-64 absolute z-20 duration-300" [class.left-8]="mostrar" [class.-left-64]="!mostrar">
-    <div class="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+  <aside class="w-64 absolute z-20 duration-300 h-screen bg-gray-50" [class.-left-5]="mostrar"
+    [class.-left-64]="!mostrar">
+    <div class="overflow-y-auto py-20 px-3 bg-gray-50 rounded dark:bg-gray-800">
       <ul class="space-y-2">
         <li>
           <a href="#"

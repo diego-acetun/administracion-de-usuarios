@@ -8,28 +8,7 @@ import { UsuarioService } from 'src/app/usuario.service';
 })
 export class LeerUsuariosComponent implements OnInit {
   usuarios!: usuario[];
-  // public usuarios: usuario[] = [
-  //   {
-  //     name: 'name1',
-  //     birthday: '1990/02/05',
-  //     email: 'email@mail',
-  //   },
-  //   {
-  //     name: 'name2',
-  //     birthday: '1990/02/05',
-  //     email: 'email@mail',
-  //   },
-  //   {
-  //     name: 'name3',
-  //     birthday: '1990/02/05',
-  //     email: 'email@mail',
-  //   },
-  //   {
-  //     name: 'name4',
-  //     birthday: '1990/02/05',
-  //     email: 'email@mail',
-  //   },
-  // ];
+
   constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {

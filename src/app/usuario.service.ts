@@ -14,7 +14,7 @@ import { login } from './interfaces/login';
 export class UsuarioService {
   // private url = 'https://crud-user.vercel.app/api/v1/users?page=1&limit=50';
   private url = 'https://crud-user.vercel.app/api/v1';
-  public page = 1;
+  public page = 11;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -44,9 +44,7 @@ export class UsuarioService {
   }
   getUsuario(id: string): Observable<usuario> {
     return this.http.get<usuario>(`${this.url}/users/${id}`).pipe(
-      tap((_) =>
-        this.toastr.success(`usuario ${_.name} obtenido`)
-      ),
+      tap((_) => this.toastr.success(`usuario ${_.name} obtenido`)),
       catchError(this.handleError<any>('getUsusario', []))
     );
   }
@@ -67,11 +65,36 @@ export class UsuarioService {
       .get<data>(`${this.url}/users?page=${this.page}&limit=50`)
       .pipe(
         map((ususarios) => ususarios.rows),
+        tap((_) => this.toastr.success(`Usuarios de la pagina ${this.page}`)),
+        catchError(this.handleError<any>('getUsuarios', []))
+      );
+  }
+
+  editarUsuario(updatedUser: usuario): Observable<usuario> {
+    return this.http
+      .put<usuario>(
+        `${this.url}/users/${updatedUser.id}`,
+        updatedUser,
+        this.httpOptions
+      )
+      .pipe(
+        map((user) => user),
         tap((_) =>
-          this.toastr.success(`Usuarios de la pagina ${this.page}`)
+          this.toastr.success(`Se actualizaron los datos del usuario ${_.name}`)
         ),
         catchError(this.handleError<any>('getUsuarios', []))
       );
+  }
+
+  eliminarUsuario(id: string | undefined): Observable<usuario> {
+    return this.http.delete<usuario>(`${this.url}/users/${id}`).pipe(
+      map((user) => user),
+      tap((_) => {
+        this.toastr.warning(`Se elimino el usuario ${_.name}`);
+        // this.router.navigate(['']);
+      }),
+      catchError(this.handleError<any>('getUsuarios', []))
+    );
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

@@ -21,10 +21,6 @@ export class UsersFormComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    // let date: Date = new Date();
-    // console.log('Date = ' + date);
-    // obs.sus
-    
     this.formulario = this.formBuilder.group({
       name: [this.user.name, [Validators.required]],
       birthday: [this.user.birthday, [Validators.required]],
@@ -41,9 +37,9 @@ export class UsersFormComponent implements OnInit {
       ],
     });
     this.obs.subscribe((user) => {
-      this.user = user
+      this.user = user;
       this.formulario.patchValue(this.user);
-      console.log('usuario desde actualizar', this.user);
+      console.log('mal', this.user);
     });
   }
 }

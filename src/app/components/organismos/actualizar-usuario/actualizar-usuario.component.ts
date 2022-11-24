@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./actualizar-usuario.component.css'],
 })
 export class ActualizarUsuarioComponent implements OnInit {
+  @ViewChild(UsersFormComponent) formulario!: UsersFormComponent;
+
   user: usuario = {
     name: 'nameEdit',
     birthday: '1997-05-25',
@@ -29,9 +31,25 @@ export class ActualizarUsuarioComponent implements OnInit {
     this.getUsuario();
   }
 
-  getUsuario():Observable<usuario> {
+  getUsuario(): Observable<usuario> {
     const id = this.route.snapshot.paramMap.get('id')!;
-    console.log('id desde actualizar', id);
-    return this.usuarioService.getUsuario(id)
+    console.log('id:', id);
+    return this.usuarioService.getUsuario(id);
+  }
+
+  // getUsuario() {
+  //   const id = this.route.snapshot.paramMap.get('id')!;
+  //   console.log('id:', id);
+  //   return this.usuarioService.getUsuario(id).subscribe((user) => {
+  //     this.user = user;
+  //     this.formulario.formulario.patchValue(user);
+  //   });
+  // }
+
+  click() {
+    const id = this.route.snapshot.paramMap.get('id')!;
+    console.log('mostrando');
+    const updatedUser: usuario = { ...this.formulario.formulario.value, id };
+    this.usuarioService.editarUsuario(updatedUser).subscribe((user) => {});
   }
 }

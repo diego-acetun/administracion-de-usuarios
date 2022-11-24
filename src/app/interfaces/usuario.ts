@@ -1,8 +1,8 @@
 export interface usuario {
   id?: string;
-  name: string;
+  name?: string;
   birthday?: string;
-  email: string;
+  email?: string;
   password?: string;
   image?: string;
 }

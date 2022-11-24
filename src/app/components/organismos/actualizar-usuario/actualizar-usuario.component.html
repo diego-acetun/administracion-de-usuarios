@@ -1,6 +1,7 @@
 <app-titulo titulo="Editar Usuario"></app-titulo>
-<app-users-form [user]="user" [obs]="getUsuario()" #f1>
-  <app-boton texto="Actualizar"></app-boton>
+<app-users-form [user]="user" [obs]="getUsuario()">
+  <!-- [user]="user" [obs]="getUsuario()" -->
+  <app-boton texto="Actualizar" (click)="click()"></app-boton>
 </app-users-form>
 
 <!-- <p>

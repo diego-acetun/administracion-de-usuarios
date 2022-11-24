@@ -31,20 +31,20 @@ export class ActualizarUsuarioComponent implements OnInit {
     this.getUsuario();
   }
 
-  getUsuario(): Observable<usuario> {
-    const id = this.route.snapshot.paramMap.get('id')!;
-    console.log('id:', id);
-    return this.usuarioService.getUsuario(id);
-  }
-
-  // getUsuario() {
+  // getUsuario(): Observable<usuario> {
   //   const id = this.route.snapshot.paramMap.get('id')!;
   //   console.log('id:', id);
-  //   return this.usuarioService.getUsuario(id).subscribe((user) => {
-  //     this.user = user;
-  //     this.formulario.formulario.patchValue(user);
-  //   });
+  //   return this.usuarioService.getUsuario(id);
   // }
+
+  getUsuario() {
+    const id = this.route.snapshot.paramMap.get('id')!;
+    console.log('id:', id);
+    return this.usuarioService.getUsuario(id).subscribe((user) => {
+      this.user = user;
+      this.formulario.formulario.patchValue(user);
+    });
+  }
 
   click() {
     const id = this.route.snapshot.paramMap.get('id')!;
@@ -53,3 +53,5 @@ export class ActualizarUsuarioComponent implements OnInit {
     this.usuarioService.editarUsuario(updatedUser).subscribe((user) => {});
   }
 }
+/* 
+instlara cli ionic */

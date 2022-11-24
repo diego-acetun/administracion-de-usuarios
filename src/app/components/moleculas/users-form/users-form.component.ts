@@ -16,7 +16,6 @@ export class UsersFormComponent implements OnInit {
     password: '',
     image: '',
   };
-  @Input() obs!: Observable<usuario>;
   public formulario!: FormGroup;
   constructor(private formBuilder: FormBuilder) {}
 
@@ -36,12 +35,6 @@ export class UsersFormComponent implements OnInit {
         ],
       ],
     });
-    if (this.obs) {
-      this.obs.subscribe((user) => {
-        this.user = user;
-        this.formulario.patchValue(this.user);
-        console.log('mal', this.user);
-      });
-    }
+
   }
 }

@@ -131,3 +131,8 @@ export class UsuarioService {
     };
   }
 }
+/* domain.com/users
+domain.com/user/id
+domain.com/user-create
+William Chanchavac12:12
+domain.com/user/id */
